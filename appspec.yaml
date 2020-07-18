@@ -1,4 +1,4 @@
-version: 0.0
+version: 0.1
 os: linux
 
 files:
@@ -6,18 +6,3 @@ files:
     destination: /opt/apache-tomcat-8.5.35/webapps
     overwrite: yes
 
-hooks:
-  BeforeInstall:
-    - location: scripts/stop_apache.sh
-      runas: root
-  ApplicationStart:
-    - location: scripts/changepermission.sh
-      timeout: 3600
-  AfterInstall:
-    - location: scripts/start_apache.sh
-      timeout: 180
-      runas: root
-  ValidateService:
-    - location: scripts/status_apache.sh
-      timeout: 3600
-      runas: root
